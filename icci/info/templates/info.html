@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="pills-ico-tab" data-toggle="pill" href="#pills-ico" role="tab" aria-controls="pills-ico" aria-selected="true">ICO</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="pills-events-tab" data-toggle="pill" href="#pills-events" role="tab" aria-controls="pills-events" aria-selected="false">Wydarzenia</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="pills-articles-tab" data-toggle="pill" href="#pills-articles" role="tab" aria-controls="pills-articles" aria-selected="false">Artykuły</a>
+    </li>
+</ul>
+    
+    <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-ico" role="tabpanel" aria-labelledby="pills-ico-tab">
+            {% include "templates/ico.html" %}  
+        </div>
+
+        
+        <div class="tab-pane fade" id="pills-events" role="tabpanel" aria-labelledby="pills-events-tab">                
+          
+            {% for x in coinmarketcal_events %}
+                
+                <div class="card text-center">
+                        <div class="card-header">
+                                
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">{{x.title}}</h5>
+                            <p class="card-text">{{x.description}}</p>
+                            <a href="{{ x.proof }}" class="btn btn-primary">Potwierdzenie</a>                            
+                            <a href="{{x.source}}" class="btn btn-primary">Więcej</a>
+                        </div>
+                        <div class="card-footer text-muted">
+                                <i class="fas fa-play" style="color:lightgreen"> &nbsp;</i>{{x.date_event}} &nbsp;&nbsp;&nbsp;
+                        </div>
+                    </div>
+                    <br>
+
+            {% endfor %}
+            {{coinmarketcal_events}}
+
+
+        </div>
+        <div class="tab-pane fade" id="pills-articles" role="tabpanel" aria-labelledby="pills-articles-tab">
+            {% include "rss_reader.html" %}  
+        </div>
+    </div>
+    
+    {% endblock %}

@@ -1,0 +1,33 @@
+
+
+{% block content %}
+
+{% for x in rss_feeds %}
+
+<!-- 
+<div class="card text-center">
+    <div class="card-header">
+        <img class="card-img-top" src="{{x.img}}" >
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">{{x.title}}</h5>
+        <p class="card-text">{{x.description}}</p>
+        <a href="{{x.link}}" class="btn btn-primary">Więcej</a>
+    </div>
+    <div class="card-footer text-muted">
+            <i class="far fa-calendar-alt"></i> {{x.published}} &nbsp; &nbsp; &nbsp; &nbsp; <i class="fas fa-rss"></i> {{ x.source }}
+    </div>
+</div>
+<br>
+
+-->
+
+<div class="alert alert-primary" role="alert">
+{{x.title}}<br>
+{{x.description}}
+    
+</div>
+
+
+{% endfor %}
+{% endblock %}
